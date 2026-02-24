@@ -7,9 +7,15 @@ import ArticleCard from "./components/ArticleCard";
 import ErrorPage from "./components/ErrorPage";
 
 function App() {
+  const CURRENT_USER = {
+    username: "nasif",
+    name: "Nasif Islam",
+    avatar_url: "https://avatars.githubusercontent.com/u/178942734?v=4",
+  };
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header CURRENT_USER={CURRENT_USER} />
       <Routes>
         <Route path="/" element={<ArticleList />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
