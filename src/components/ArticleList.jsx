@@ -1,14 +1,10 @@
 import ArticleCard from "./ArticleCard";
 
-const ArticleList = ({ articles }) => {
-  return (
-    <section>
-      <h2>Articles</h2>
-      {articles.map((article) => {
-        return <ArticleCard key={article.article_id} article={article} />;
-      })}
-    </section>
-  );
-};
-
+const ArticleList = ({ articles }) => (
+  <section className="article-list">
+    {articles.map((article) => (
+      <ArticleCard key={article.article_id} article={article} />
+    ))}
+  </section>
+);
 export default ArticleList;
