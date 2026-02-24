@@ -1,9 +1,12 @@
 import ArticleCard from "./ArticleCard";
 
-const ArticleList = () => {
+const ArticleList = ({ articles }) => {
   return (
     <section>
-      <h2>Article List</h2>
+      <h2>Articles</h2>
+      {articles.map((article) => {
+        return <ArticleCard key={article.article_id} article={article} />;
+      })}
     </section>
   );
 };

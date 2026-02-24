@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
+import ArticleList from "../components/ArticleList";
 
 const HomePage = () => {
   const [articles, setArticles] = useState([]);
@@ -10,8 +11,8 @@ const HomePage = () => {
     const fetchArticles = async () => {
       try {
         const response = await axios.get("https://nabo.onrender.com/api/articles");
-        setArticles(response.data);
-        console.log(response.data);
+        setArticles(response.data.articles);
+        console.log(response.data.articles);
       } catch (error) {
         setIsError(true);
         console.error("Error fetching articles:", error);
@@ -25,7 +26,7 @@ const HomePage = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error: Something went wrong</p>;
 
-  return <div>{/* Add logic later */}</div>;
+  return <ArticleList articles={articles} />;
 };
 
 export default HomePage;
