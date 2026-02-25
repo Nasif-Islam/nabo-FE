@@ -225,6 +225,66 @@ button {
 .article-page-stats {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   margin: 8px 0 16px 0;
 }
+
+.article-voter-container {
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ margin: 10px 0; 
+}
+
+.vote-card {
+  display:flex;
+  align-items: center;
+  background-color: #f1f3f5;
+  border: 1px solid #dee2e6;
+  border-radius:25px;
+  padding: 2px;
+  overflow: hidden;
+  user-select: none
+}
+
+.vote-button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.vote-button:hover {
+  background-color: #e9ecef;
+}
+
+.vote-count {
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  min-width: 35px;
+  text-align: center;
+  color: #212529;
+}
+
+.active-up {
+  color: #1cba34 !important;
+  background-color: #ff45001a !important;
+}
+
+.active-down {
+  color: #d96a09 !important;
+  background-color: #7193ff1a !important;
+}
+
+.vote-error-message {
+  color: #fa5252;
+  font-size: 0.8rem;
+  margin-top: 6px;
+  font-weight: 600;
+}
+

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ArticleVote from "../components/ArticleVote";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
@@ -39,9 +40,7 @@ const ArticlePage = () => {
         </p>
         <div className="article-page-stats">
           <span className="article-page-topic">{article.topic}</span>
-          <span>
-            {article.votes >= 0 ? `⬆️ ${article.votes}` : `⬇️ ${Math.abs(article.votes)}`}
-          </span>
+          <ArticleVote article_id={article_id} initialVotes={article.votes} />
           <span>💬 {article.comment_count}</span>
         </div>
         <p className="article-page-body">{article.body}</p>
