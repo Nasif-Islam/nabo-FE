@@ -17,12 +17,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header user={CURRENT_USER} darkMode={darkMode} onToggleDark={() => setDarkMode(!darkMode)} />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/articles/:article_id" element={<ArticlePage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <main className="main-content">
+        <Header
+          user={CURRENT_USER}
+          darkMode={darkMode}
+          onToggleDark={() => setDarkMode(!darkMode)}
+        />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/articles/:article_id" element={<ArticlePage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </main>
       <NavBar />
     </BrowserRouter>
   );
