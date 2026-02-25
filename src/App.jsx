@@ -7,7 +7,7 @@ import ArticlePage from "./pages/ArticlePage";
 import ErrorPage from "./pages/ErrorPage";
 
 const CURRENT_USER = {
-  username: "nasif",
+  username: "Nasif",
   name: "Nasif Islam",
   avatar_url: "https://avatars.githubusercontent.com/u/178942734?v=4",
 };

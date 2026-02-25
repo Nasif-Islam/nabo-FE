@@ -13,7 +13,7 @@ const ArticleCard = ({ article }) => {
       <div className="article-card-header">
         <div className="article-card-meta">
           <h2 className="article-card-title">{title}</h2>
-          <p className="article-card-author">By {author}</p>
+          <p className="article-card-author">{author}</p>
         </div>
         <span className="article-card-topic">{topic}</span>
       </div>
@@ -23,9 +23,7 @@ const ArticleCard = ({ article }) => {
       <div className="article-card-footer">
         <span>{formattedDate}</span>
         <span>💬 {comment_count}</span>
-        <span>
-          {votes} {votes > 0 ? "⬆️" : votes < 0 ? "⬇️" : null}
-        </span>
+        <span>{votes >= 0 ? `👍 ${votes}` : `👎 ${Math.abs(votes)}`}</span>
       </div>
     </article>
   );
