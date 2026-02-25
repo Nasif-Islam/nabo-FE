@@ -249,12 +249,13 @@ button {
 
 .vote-button {
   background: none;
-  border: none;
+  border: 1px solid transparent;
   padding: 8px 12px;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -273,12 +274,17 @@ button {
 
 .active-up {
   color: #1cba34 !important;
-  background-color: #ff45001a !important;
+  background-color: #e6fffa !important;
+  border: 1px solid #1cba34;
+  filter: drop-shadow(0 0 5px rgba(28, 186, 52, 0.4));
+  transform: scale(1.1);
 }
 
 .active-down {
-  color: #d96a09 !important;
-  background-color: #7193ff1a !important;
+  color: #ff4500 !important;
+  background-color: #fff5f5 !important; 
+  filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.4)); 
+  transform: scale(1.1);
 }
 
 .vote-error-message {
