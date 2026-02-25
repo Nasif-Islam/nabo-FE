@@ -23,7 +23,7 @@ const ArticleCard = ({ article }) => {
       <div className="article-card-footer">
         <span>{formattedDate}</span>
         <span>💬 {comment_count}</span>
-        <span>{votes >= 0 ? `👍 ${votes}` : `👎 ${Math.abs(votes)}`}</span>
+        <span>{votes >= 0 ? `⬆️ ${votes}` : `⬇️ ${Math.abs(votes)}`}</span>
       </div>
     </article>
   );

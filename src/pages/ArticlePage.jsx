@@ -33,19 +33,18 @@ const ArticlePage = () => {
     <article className="article-page">
       <img className="article-page-image" src={article.article_img_url} alt={article.title} />
       <div className="article-page-content">
-        <span className="article-page-topic">{article.topic}</span>
         <h1 className="article-page-title">{article.title}</h1>
         <p className="article-page-meta">
           {article.author} {formattedDate}
         </p>
-        <p className="article-page-body">{article.body}</p>
-        <div className="article-page-footer">
+        <div className="article-page-stats">
+          <span className="article-page-topic">{article.topic}</span>
           <span>
-            {article.votes >= 0 ? `👍 ${article.votes}` : `👎 ${Math.abs(article.votes)}`}
-            {article.votes}
+            {article.votes >= 0 ? `⬆️ ${article.votes}` : `⬇️ ${Math.abs(article.votes)}`}
           </span>
           <span>💬 {article.comment_count}</span>
         </div>
+        <p className="article-page-body">{article.body}</p>
       </div>
     </article>
   );
