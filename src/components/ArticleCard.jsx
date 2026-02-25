@@ -6,11 +6,7 @@ const ArticleCard = ({ article }) => {
 
   const navigate = useNavigate();
 
-  const formattedDate = new Date(created_at).toLocaleDateString("en-Gb", {
-    day: "2-numeric",
-    month: "short",
-    year: "numeric",
-  });
+  const formattedDate = new Date(created_at).toLocaleDateString("en-GB");
 
   return (
     <article className="article-card" onClick={() => navigate(`/articles/${article_id}`)}>
@@ -25,9 +21,11 @@ const ArticleCard = ({ article }) => {
       <img className="article-card-image" src={article_img_url} alt={title} />
 
       <div className="article-card-footer">
-        <span>{votes}</span>
-        <span>{comment_count} comments</span>
         <span>{formattedDate}</span>
+        <span>💬 {comment_count}</span>
+        <span>
+          {votes} {votes > 0 ? "⬆️" : votes < 0 ? "⬇️" : null}
+        </span>
       </div>
     </article>
   );

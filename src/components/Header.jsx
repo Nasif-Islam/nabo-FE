@@ -1,12 +1,14 @@
 const Header = ({ darkMode, onToggleDark, user }) => {
   return (
-    <header>
-      <div>
-        <img src={user.avatar_url} alt={`Avatar of ${user.name}`} />
-        <p>{user.name}</p>
+    <header className="header">
+      <div className="header-user">
+        <img className="header-avatar" src={user.avatar_url} alt={`Avatar of ${user.name}`} />
+        <span className="header-username">{user.name}</span>
       </div>
-      <h1>Nabo</h1>
-      <button onClick={onToggleDark}>{darkMode ? "☀️" : "🌙"}</button>
+      <h1 className="header-logo">Nabo</h1>
+      <button className="header-toggle" onClick={onToggleDark}>
+        {darkMode ? "☀️" : "🌙"}
+      </button>
     </header>
   );
 };
