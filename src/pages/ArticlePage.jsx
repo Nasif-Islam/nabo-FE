@@ -1,29 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import ArticleVote from "../components/ArticleVote";
+import useFetch from "../hooks/useFetch";
 
 const ArticlePage = () => {
   const { article_id } = useParams();
-  const [article, setArticle] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
-    const fetchArticle = async () => {
-      try {
-        const response = await axios.get(`https://nabo.onrender.com/api/articles/${article_id}`);
-        setArticle(response.data.article);
-      } catch (error) {
-        console.log(error);
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchArticle();
-  }, [article_id]);
+  const { data, isLoading, isError } = useFetch(`/articles/${article_id}`);
+  const article = data?.article;
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error loading article</p>;
