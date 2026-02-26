@@ -6,10 +6,12 @@ const ArticlePage = () => {
   const { article_id } = useParams();
 
   const { data, isLoading, isError } = useFetch(`/articles/${article_id}`);
-  const article = data?.article;
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error loading article</p>;
+
+  const { article } = data;
+  if (!article) return <p>Article not found</p>;
 
   const formattedDate = new Date(article.created_at).toLocaleDateString("en-GB");
 
