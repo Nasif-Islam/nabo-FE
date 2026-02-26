@@ -1,4 +1,9 @@
-const Header = ({ darkMode, onToggleDark, user }) => {
+import { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
+
+const Header = ({ darkMode, onToggleDark }) => {
+  const { user } = useContext(UserContext);
+
   return (
     <header className="header">
       <div className="header-user">
