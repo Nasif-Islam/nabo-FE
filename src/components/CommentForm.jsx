@@ -1,27 +1,44 @@
 import { useState } from "react";
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { BASE_URL } from "../hooks/useFetch";
 
-const CommentForm = ({ article_id, setComments }) => {
+const CommentForm = ({ article_id, setComments, comments }) => {
   const [commentBody, setCommentBody] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
+  const { user } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
-
     if (commentBody.trim() === "") return;
+
+    const originalComments = [...comments];
+    const optimisticComment = {
+      comment_id: Date.now(),
+      article_id: article_id,
+      body: commentBody,
+      votes: 0,
+      author: user.username,
+      created_at: new Date().toISOString(),
+    };
 
     setIsSubmitting(true);
     setError(null);
-
     try {
-      const { data } = await axios.post(
-        `https://nabo.onrender.com/api/articles/${article_id}/comments`,
-        { username: "Nasif", body: commentBody },
-      );
-      setComments((prevComment) => [data.comment, ...prevComment]);
+      setComments([optimisticComment, ...originalComments]);
+
+      const { data } = await axios.post(`${BASE_URL}/articles/${article_id}/comments`, {
+        username: user.username,
+        body: commentBody,
+      });
+
+      if (data) setComments([data.comment, ...originalComments]);
       setCommentBody("");
     } catch (err) {
+      console.log(err);
+      setComments(originalComments);
       setError("Failed to post comment. Please try again");
     } finally {
       setIsSubmitting(false);
@@ -62,3 +79,5 @@ const CommentForm = ({ article_id, setComments }) => {
     </form>
   );
 };
+
+export default CommentForm;

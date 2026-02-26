@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-const BASE_URL = "https://nabo.onrender.com/api";
+
+export const BASE_URL = "https://nabo.onrender.com/api";
 
 const useFetch = (endpoint) => {
   const [data, setData] = useState(null);

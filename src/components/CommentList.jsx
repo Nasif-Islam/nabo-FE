@@ -1,17 +1,23 @@
 import useFetch from "../hooks/useFetch";
 import CommentCard from "./CommentCard";
+import CommentForm from "./CommentForm";
+import { useState, useEffect } from "react";
 
 const CommentList = ({ article_id }) => {
   const { data, isLoading, isError } = useFetch(`/articles/${article_id}/comments`);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    if (data) setComments(data.comments);
+  }, [data]);
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error fetching comments</p>;
-
-  const { comments } = data;
   if (comments.length === 0) return <p>No comments</p>;
 
   return (
     <section className="comments-section">
+      <CommentForm article_id={article_id} setComments={setComments} comments={comments} />
       <h2 className="comments-section-title">Comments</h2>
       <ul className="comments-list">
         {comments.map((comment) => (
