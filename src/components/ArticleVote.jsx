@@ -28,6 +28,7 @@ const ArticleVote = ({ article_id, initialVotes }) => {
         inc_votes: increment,
       });
     } catch (err) {
+      console.log(err);
       setVotes(originalVotes);
       setUserVotes(originalUserVote);
       setError("Failed to update vote. Please try again");
