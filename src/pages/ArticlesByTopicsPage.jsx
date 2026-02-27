@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const ArticlesByTopicPage = () => {
   const { topic } = useParams();
-  const { data, isLoading, isError } = useFetch(`/topics/${topic}`);
+  const { data, isLoading, isError } = useFetch(`/articles?topic=${topic}`);
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error: Something went wrong</p>;
@@ -12,7 +12,14 @@ const ArticlesByTopicPage = () => {
   const { articles } = data;
   if (articles.length === 0) return <p>No articles found</p>;
 
-  return <ArticleList articles={articles} />;
+  return (
+    <>
+      <h1 className="topic-page-title">
+        Articles about {topic.charAt(0).toUpperCase() + topic.slice(1)}
+      </h1>
+      <ArticleList articles={articles} />
+    </>
+  );
 };
 
 export default ArticlesByTopicPage;
