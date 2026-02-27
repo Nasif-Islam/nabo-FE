@@ -6,14 +6,13 @@ import CommentList from "../components/CommentList";
 const ArticlePage = () => {
   const { article_id } = useParams();
 
-  const { data, isLoading, isError } = useFetch(`/articles/${article_id}`);
+  const { data, isLoading, error } = useFetch(`/articles/${article_id}`);
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error loading article</p>;
+  if (error?.status === 404) return <p>This article doesn't exist</p>;
+  if (error) return <p>Something went wrong</p>;
 
   const { article } = data;
-  if (!article) return <p>Article not found</p>;
-
   const formattedDate = new Date(article.created_at).toLocaleDateString("en-GB");
 
   return (

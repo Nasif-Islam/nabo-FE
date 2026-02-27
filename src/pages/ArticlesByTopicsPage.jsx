@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 
 const ArticlesByTopicPage = () => {
   const { topic } = useParams();
-  const { data, isLoading, isError } = useFetch(`/articles?topic=${topic}`);
+  const { data, isLoading, error } = useFetch(`/articles?topic=${topic}`);
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error: Something went wrong</p>;
+  if (error?.status === 404) return <p>This topic doesn't exist</p>;
+  if (error) return <p>Something went wrong</p>;
 
   const { articles } = data;
   if (articles.length === 0) return <p>No articles found</p>;

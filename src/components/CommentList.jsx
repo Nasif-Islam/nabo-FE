@@ -4,7 +4,7 @@ import CommentForm from "./CommentForm";
 import { useState, useEffect } from "react";
 
 const CommentList = ({ article_id }) => {
-  const { data, isLoading, isError } = useFetch(`/articles/${article_id}/comments`);
+  const { data, isLoading, error } = useFetch(`/articles/${article_id}/comments`);
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const CommentList = ({ article_id }) => {
   }, [data]);
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error fetching comments</p>;
+  if (error) return <p>Error fetching comments</p>;
   if (comments.length === 0) return <p>No comments</p>;
 
   return (

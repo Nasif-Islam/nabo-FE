@@ -412,3 +412,19 @@ button {
     margin: 0 auto;
   }
 }
+
+.error-page {
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.error-page h2 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.error-page p {
+  color: #666;
+  font-size: 14px;
+}

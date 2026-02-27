@@ -17,10 +17,10 @@ const HomePage = () => {
     setSearchParams({ sort_by: sortBy, order: newOrder });
   };
 
-  const { data, isLoading, isError } = useFetch(`/articles?sort_by=${sortBy}&order=${order}`);
+  const { data, isLoading, error } = useFetch(`/articles?sort_by=${sortBy}&order=${order}`);
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error: Something went wrong</p>;
+  if (error) return <p>Error: Something went wrong</p>;
 
   const { articles } = data;
   if (articles.length === 0) return <p>No articles found</p>;

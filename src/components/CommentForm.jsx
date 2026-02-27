@@ -12,7 +12,10 @@ const CommentForm = ({ article_id, setComments, comments }) => {
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
-    if (commentBody.trim() === "") return;
+    if (commentBody.trim() === "") {
+      setError("Please write a comment before posting");
+      return;
+    }
 
     const originalComments = [...comments];
     const optimisticComment = {
