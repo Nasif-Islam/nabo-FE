@@ -13,8 +13,8 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Header darkMode={darkMode} onToggleDark={() => setDarkMode(!darkMode)} />
       <main className="main-content">
-        <Header darkMode={darkMode} onToggleDark={() => setDarkMode(!darkMode)} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/articles/:article_id" element={<ArticlePage />} />
