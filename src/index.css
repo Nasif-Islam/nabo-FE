@@ -349,3 +349,39 @@ button {
   font-size: 13px;
   color: #666;
 }
+
+.delete-button {
+  background: none;
+  border: 1px solid #ff4500;
+  color: #ff4500;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: auto;
+}
+
+.delete-button:hover {
+  background-color: #ff4500;
+  color: #ffffff;
+}
+
+.delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.comment-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.error-message {
+  color: #ff4500;
+  font-size: 12px;
+  font-weight: 600;
+}
